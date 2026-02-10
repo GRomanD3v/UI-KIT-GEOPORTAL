@@ -1,19 +1,65 @@
-* { /* Resetear estilos */
+* {
+    box-sizing: border-box; 
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 body {
-    background-color: #f0f2f5; /* Un fondo gris suave para que resalte la tarjeta blanca */
+    background-color: #f4f6f9;
+    font-family: 'Avenir Next', sans-serif;
+    display: block;
+    padding: 40px 20px;
+}
+
+.ui-kit-container {
+    max-width: 1000px;
+    margin: 0 auto; /* Centrado */
+    background-color: transparent;
+}
+
+.doc-header {
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.doc-header h1 {
+    color: #041E42;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+.doc-header p {
+    color: #666;
+    font-size: 1.1rem;
+}
+hr{
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin-bottom: 40px;
+}
+
+.ui-section {
+    margin-bottom: 60px;
+}
+
+.section-title {
+    color: #041e42;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-left: 5px solid #041e42;
+    padding-left: 15px;
+}
+
+.component-preview {
+    /* Si quieres centrar la card dentro de su sección, usa flex aquí */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Centrado vertical en la pantalla */
+    justify-content: flex-start; /* O 'center' si prefieres */
+    gap: 20px;
+    flex-wrap: wrap;    
 }
 .card {
     font-family: 'Avenir Next', sans-serif;
     width: 300px;
-    height: 500px;
+    height: 600px;
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
@@ -31,19 +77,19 @@ body {
 
 .card-image {
     width: 100%;
-    height: 280px;
+    height: 380px;
     padding: 12px;
 }
 
 .card-image img {
     width: 100%;
     height: 100%;
-    border-radius: 8px;
+    border-radius: 8px 8px 0 0;
     object-fit: cover;/* Evita que la foto se deforme */
 }
 
 .card-content {
-    padding: 0 20px 20px 20px;
+    padding: 15px 20px;
     /* ESTO ES ORO: Hace que este div ocupe todo el espacio sobrante */
     flex: 1; 
     display: flex;
@@ -64,12 +110,11 @@ body {
     line-height: 1.5; /* Mejora la lectura */
 }
 
-/* 5. BOTÓN */
 .card-button {
     text-align: center; /* Centramos el texto dentro del botón */
     color: #041E42;
+    border: 1px solid #041E42;
     padding: 12px 0; /* Padding vertical, ancho automático */
-    border: 2px solid #041E42;
     text-decoration: none;
     border-radius: 6px;
     font-weight: 600;
@@ -84,13 +129,78 @@ body {
     color: #fff;
 }
 
+.card-horizontal {
+    display: flex; 
+    width: 100%;
+    max-width: 700px; 
+    background-color: #f7f7f7; 
+    border-radius: 20px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+}
+
+/*Lado Izquierdo: Imagen (40% del ancho) */
+.card-h-image {
+    width: 40%;
+    position: relative; /* Necesario para que la imagen llene el espacio */
+    /* No le ponemos padding para que la imagen llegue al borde */
+}
+
+.card-h-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crucial: recorta la imagen para llenar el espacio sin deformar */
+    display: block; /* Elimina un pequeño espacio fantasma debajo de las imágenes */
+}
+
+/* 3. Lado Derecho: Contenido (60% del ancho) */
+.card-h-content {
+    width: 60%;
+    padding: 40px; /* Buen espacio interno */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: flex-start; /* Alinea todo a la izquierda */
+}
+
+/* 4. Tipografía Específica */
+.card-h-title {
+    color: #041E42; 
+    font-size: 1.75rem; 
+    font-weight: 600;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.card-h-description {
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    max-width: 90%; 
+}
+
+.card-h-button {
+    margin-top: 0; 
+    color: #041E42;
+    border: 1px solid #041E42;
+    padding: 12px 35px; 
+}
+
+.card-h-button:hover {
+    background-color: #041E42; 
+    border: 1px solid #041E42;
+    color: #ffffff;
+    transform: translateY(-2px); 
+}
 /* Contenedor de la grilla de íconos */
 .icon-grid {
     display: grid;
-    /* ESTO ES MAGIA: Crea columnas automáticas de mínimo 150px */
+    /* ESTO ES MAGIA: Crea columnas automáticas de mínimo 250px */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
     gap: 20px;
-    padding: 40px;
+    padding-top: 40px;
     max-width: 1000px;
     margin: 0 auto; /* Centrado */
 }
@@ -98,13 +208,10 @@ body {
 /* Cada ítem de ícono */
 .icon-item {
     background: white;
-    padding: 10px;
     border-radius: 8px;
-    text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: flex-start;
     transition: transform 0.2s;
 }
 
@@ -113,7 +220,7 @@ body {
 }
 
 .icon-item img {
-    width: 200px;
+    width: 300px;
     height: auto;
     margin-bottom: 10px;
     object-fit: cover;
