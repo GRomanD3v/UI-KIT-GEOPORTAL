@@ -1,0 +1,120 @@
+* { /* Resetear estilos */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #f0f2f5; /* Un fondo gris suave para que resalte la tarjeta blanca */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Centrado vertical en la pantalla */
+}
+.card {
+    font-family: 'Avenir Next', sans-serif;
+    width: 300px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+    /* Flexbox */ 
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Evita que la imagen se salga de la tarjeta */ 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;   
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);    
+    cursor: pointer;    
+}
+
+.card-image {
+    width: 100%;
+    height: 280px;
+    padding: 12px;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;/* Evita que la foto se deforme */
+}
+
+.card-content {
+    padding: 0 20px 20px 20px;
+    /* ESTO ES ORO: Hace que este div ocupe todo el espacio sobrante */
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 1.25rem; /* Usar rem es mejor práctica que px para accesibilidad */
+    font-weight: 700;
+    color: #041E42;
+    margin-bottom: 8px;
+}
+
+.card-description {
+    font-size: 1rem;
+    color: #4a4a4a;
+    line-height: 1.5; /* Mejora la lectura */
+}
+
+/* 5. BOTÓN */
+.card-button {
+    text-align: center; /* Centramos el texto dentro del botón */
+    color: #041E42;
+    padding: 12px 0; /* Padding vertical, ancho automático */
+    border: 2px solid #041E42;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    
+    /* Para que no se pegue al texto si es muy largo */
+    margin-top: 16px; 
+}
+
+.card-button:hover {
+    background-color: #041E42;
+    color: #fff;
+}
+
+/* Contenedor de la grilla de íconos */
+.icon-grid {
+    display: grid;
+    /* ESTO ES MAGIA: Crea columnas automáticas de mínimo 150px */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 20px;
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto; /* Centrado */
+}
+
+/* Cada ítem de ícono */
+.icon-item {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.icon-item:hover {
+    transform: scale(1.05); /* Efecto pop al pasar el mouse */
+}
+
+.icon-item img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
