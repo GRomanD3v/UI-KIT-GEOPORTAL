@@ -11,7 +11,7 @@ body {
 }
 
 .ui-kit-container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto; /* Centrado */
     background-color: transparent;
 }
@@ -56,10 +56,96 @@ hr{
     gap: 20px;
     flex-wrap: wrap;    
 }
+
+/* =========================================
+   COMPONENTES: BARRA DE NAVEGACIÓN
+   ========================================= */
+.nav-menu {
+    background-color: #ffffff;
+    padding: 15px 40px; /* espacio interno */
+    border-bottom: 1px solid #e0e0e0; /* linea gris abajo */
+    font-family: 'Avenir Next', sans-serif;
+    display: flex;
+    align-items: center; /* Centra todo verticalmente */
+    justify-content: space-between; /*Empuja a los grupos a los extremos y al centro */
+}
+
+/* Logo */
+.nav-left .logo-img {
+    height: 50px; /* Altura fija el ancho se ajusta solo */
+    width: auto;
+    display: block;
+}
+
+/* Enlaces de Nav */
+.nav-links {
+    list-style: none; /* Quita los puntos */
+    display: flex;
+    gap: 25px; /* Espacio entre enlaces */
+    margin: 0 20px 0 20px;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #041e42;
+    font-weight: 600;
+    font-size:0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em; 
+    transition: color 0.3s ease;
+}
+.nav-links a:hover {
+    color: #2d6cc0;
+}
+/* --- 3. UTILIDADES (DERECHA) --- */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Espacio entre los elementos de la derecha */
+}
+/* Contenedor del Carrito (Para poder posicionar la burbuja) */
+.cart-wrapper {
+    position: relative;
+    cursor: pointer;
+}
+/*Burbuja del carrito */
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color:#2d6cc0;
+    color: #fff;
+    font-size: 0.5rem;
+    font-weight: bold;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%; /*Circulo Perfecto*/
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #fff; /*Borde blanco para separarlo del icono*/
+}
+
+/* Selector de Idioma */
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.6rem;
+    color:#041e42;
+}
+.lang-flag {
+    font-size: 1.2rem;
+}
+
 .card {
     font-family: 'Avenir Next', sans-serif;
-    width: 300px;
-    height: 600px;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
     background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
@@ -198,11 +284,10 @@ hr{
 .icon-grid {
     display: grid;
     /* ESTO ES MAGIA: Crea columnas automáticas de mínimo 250px */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 20px;
     padding-top: 40px;
-    max-width: 1000px;
-    margin: 0 auto; /* Centrado */
+    width: 100%;
 }
 
 /* Cada ítem de ícono */
@@ -211,17 +296,89 @@ hr{
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     display: flex;
-    flex-direction: flex-start;
-    transition: transform 0.2s;
-}
-
-.icon-item:hover {
-    transform: scale(1.05); /* Efecto pop al pasar el mouse */
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    transition: transform 0.2s ease;
 }
 
 .icon-item img {
-    width: 300px;
+    width: 100%; 
     height: auto;
-    margin-bottom: 10px;
-    object-fit: cover;
+    object-fit: contain; /* Para que se vean enteros */
+}
+
+.icon-item:hover {
+    transform: translateY(-5px); /* Pequeña elevación */
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+.icon-item img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* =========================================
+   RESPONSIVE (MÓVIL Y TABLET)
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    /* 1. CONTENEDOR PRINCIPAL */
+    body {
+        padding: 20px 10px; /* Menos relleno en los bordes */
+    }
+
+    /* 2. BARRA DE NAVEGACIÓN (Stacking) */
+    /* En móvil, pasamos de fila (row) a columna */
+    .nav-menu {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .nav-links {
+        flex-direction: column; /* Enlaces uno debajo del otro */
+        align-items: center;
+        gap: 15px;
+        margin: 0;
+    }
+
+    .nav-right {
+        width: 100%;
+        justify-content: center; /* Centrar utilidades */
+        border-top: 1px solid #eee;
+        padding-top: 15px;
+    }
+
+    /* 3. CARD HORIZONTAL (Se vuelve vertical en móvil) */
+    .card-horizontal {
+        flex-direction: column; /* Imagen arriba, texto abajo */
+        height: auto; /* Altura automática */
+    }
+
+    .card-h-image {
+        width: 100%; /* Imagen ocupa todo el ancho */
+        height: 200px; /* Le damos una altura fija a la imagen */
+    }
+
+    .card-h-content {
+        width: 100%; /* Contenido ocupa todo el ancho */
+        padding: 20px; /* Menos padding que en desktop */
+        align-items: center; /* Centramos todo */
+        text-align: center;
+    }
+
+    .card-h-description {
+        max-width: 100%;
+    }
+
+    /* 4. PREVISUALIZACIÓN DE COMPONENTES */
+    /* Para que las cards verticales se centren */
+    .component-preview {
+        justify-content: center;
+    }
 }
