@@ -283,7 +283,6 @@ hr{
 /* Contenedor de la grilla de íconos */
 .icon-grid {
     display: grid;
-    /* ESTO ES MAGIA: Crea columnas automáticas de mínimo 250px */
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 20px;
     padding-top: 40px;
